@@ -1,0 +1,27 @@
+{
+	"name": "@kislabin/core",
+	"version": "0.0.1",
+	"description": "This is just another framework.",
+	"private": true,
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/kislabin/kislabin.git"
+	},
+	"license": "MIT",
+	"author": "Vinicius Oliveira",
+	"extension": [
+		".ts"
+	],
+	"include": [
+		"packages/**/*.ts"
+	],
+	"devDependencies": {
+		"@types/bun": "latest"
+	},
+	"peerDependencies": {
+		"typescript": "^5"
+	},
+	"workspaces": [
+		"packages/*"
+	]
+}
