@@ -1,0 +1,26 @@
+{
+	"name": "@kislabin/example-http",
+	"version": "0.0.1",
+	"description": "HTTP capability for @kislabin/core",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/kislabin/kislabin.git",
+		"directory": "packages/net-http"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"license": "MIT",
+	"author": "Vinicius Oliveira",
+	"dependencies": {
+		"@kislabin/core": "workspace:*",
+		"@kislabin/net-http": "workspace:*"
+	},
+	"devDependencies": {
+		"@types/bun": "latest",
+		"k6": "^0.0.0"
+	},
+	"peerDependencies": {
+		"typescript": "^5"
+	}
+}
