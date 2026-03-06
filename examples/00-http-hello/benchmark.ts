@@ -2,7 +2,7 @@ import { check } from "k6";
 import http from "k6/http";
 
 export const options = {
-  vus: 800,
+  vus: 400,
   duration: "30s",
   thresholds: {
     http_req_failed: ["rate < 0.01"],
@@ -10,8 +10,8 @@ export const options = {
   },
 };
 
-export function setup() {
-  const response = http.get(`http://localhost:3000`);
+export default function setup() {
+  const response = http.get(`http://localhost:3000/users/1`);
 
   check(response, {
     "status code 200": (r) => r.status === 200,

@@ -94,7 +94,12 @@ export class Bus {
 		const ctx = createContext(envelope);
 		for (const handler of handlers) {
 			try {
-				handler(envelope, ctx);
+				const result = handler(envelope, ctx);
+				if (result instanceof Promise) {
+					result.catch((error) => {
+						console.error(`[bus] async handler error for "${envelope.type}:"`, error)
+					})
+				}
 			} catch (error) {
 				console.error(`[bus] handler error for "${envelope.type}":`, error);
 			}

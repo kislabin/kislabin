@@ -8,6 +8,7 @@
 
 // ── Entry Point ──────────────────────────────────────────────────────
 export { kernel } from "./kernel";
+export { NoHandlerError } from "./bus";
 
 // ── Types ────────────────────────────────────────────────────────────
 export type { Capability } from "./capability";

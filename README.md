@@ -29,7 +29,7 @@ const app = kernel()
   })
 
 const k = await app.start()
-k.api.emit({ type: 'test', payload: { hello: 'world' } })
+k.api.emit(k.api.envelope.event('test', { hello: 'world' }))
 ```
 
 **3 linhas.** Funciona.

@@ -50,9 +50,6 @@ const k = await app.start()
 const envelope = k.api.envelope.event('test', { hello: 'world' })
 k.api.emit(envelope)
 ```
-  k.api.envelope.command('test', { hello: 'world' })
-)
-```
 
 **3 linhas.** Funciona.
 
@@ -462,18 +459,16 @@ kernel.stop()
 
 ## Documentação
 
-- **[ARCHITECTURE.md](ARCHITECTURE.md)** — Arquitetura detalhada
-- **[../../ANALISE-CONSISTENCIA.md](../../ANALISE-CONSISTENCIA.md)** — Análise de consistência
-- **[../../contexts/kislabin-api-contract.ts](../../contexts/kislabin-api-contract.ts)** — Contrato público
-- **[../../contexts/kislabin-runtime-model.md](../../contexts/kislabin-runtime-model.md)** — Modelo de runtime
+- **[../../contexts/kislabin-api-contract.ts](../../contexts/kislabin-api-contract.ts)** — Contrato público (local apenas, gitignored)
+- **[../../contexts/kislabin-runtime-model.md](../../contexts/kislabin-runtime-model.md)** — Modelo de runtime (local apenas, gitignored)
 
 ---
 
 ## Próximos Passos
 
-1. ⏳ UUID v7 implementation
-2. ⏳ Cycle detection no grafo
-3. ⏳ HTTP capability (@kislabin/net-http)
+1. ✅ UUID v7 implementation (via `Bun.randomUUIDv7()`)
+2. ✅ Cycle detection no grafo (DFS em `capability.ts`)
+3. ✅ HTTP capability (`@kislabin/net-http` — em andamento)
 4. ⏳ Observability avançada (journal, CLI)
 
 ---

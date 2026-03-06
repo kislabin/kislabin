@@ -5,7 +5,7 @@
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/kislabin/kislabin.git",
-		"directory": "packages/00-http-hello"
+		"directory": "examples/00-http-hello"
 	},
 	"publishConfig": {
 		"access": "public"

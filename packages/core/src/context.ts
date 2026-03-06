@@ -81,7 +81,7 @@ export interface Context {
 
 	/**
 	 * Cria um context filho.
-	 * O filho começa com state bag vazza (não herda valores do pai).
+	 * O filho começa com state bag vazia (não herda valores do pai).
 	 * A referência ao `parent` permite reconstruir a chain de trace.
 	 *
 	 * @param envelope - Envelope do filho (usa o do pai se omitido)
@@ -144,7 +144,7 @@ class LazyContext implements Context {
 	}
 
 	child(envelope?: Envelope): Context {
-		return new LazyContext(envelope ?? this.envelope, this);
+		return new LazyContext(envelope ?? this.envelope, this, this.deadline);
 	}
 }
 

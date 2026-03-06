@@ -313,9 +313,10 @@ export function kernel(): KernelBuilder {
 
 		async start(): Promise<Kernel> {
 			state = "starting";
-			bus.emit(factory.signal("signal:kernel.init", {}));
+			
 
 			try {
+				bus.emit(factory.signal("signal:kernel.init", {}));
 				await registry.init(api);
 				await registry.start();
 			} catch (error) {

@@ -2,7 +2,7 @@
 // RESPONSE — Handler result → HTTP Response
 // ════════════════════════════════════════════════════════════════════
 
-import { NoHandlerError } from "@kislabin/core/src/bus";
+import { NoHandlerError } from "@kislabin/core";
 import type { ErrorHandler, HttpPayload } from "./types";
 
 export function serializeResult(result: unknown): Response {
