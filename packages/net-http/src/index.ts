@@ -3,4 +3,17 @@
 // ════════════════════════════════════════════════════════════════════
 
 export { http } from "./capability.ts";
-export type { HttpConfig, HttpPayload } from "./types.ts";
+export type {
+  ErrorHandler,
+  HandlerContext,
+  HandlerFn,
+  HandlerWithBeforeLoad,
+  HttpConfig,
+  HttpPayload,
+  LoaderContext,
+  LoaderFn,
+  RouteDefinition,
+  RouteHandlers,
+  RouterGroup,
+  SearchParser,
+} from "./types.ts";

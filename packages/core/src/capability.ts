@@ -21,6 +21,7 @@
 // - Shutdown: ordem reversa (dependentes primeiro)
 
 import type { KernelAPI } from "./kernel";
+import { createEnvelopeFactory } from "./message";
 
 // ── Interface Pública ────────────────────────────────────────────────
 
@@ -193,7 +194,12 @@ export class CapabilityRegistry {
 	/** Executa `init()` em todas as capabilities, em ordem topológica. */
 	async init(kernel: KernelAPI): Promise<void> {
 		for (const cap of this.sorted()) {
-			await cap.init?.(kernel);
+			// Cria uma API com factory vinculada ao nome da capability
+			const canApi: KernelAPI = {
+				...kernel,
+				envelope: createEnvelopeFactory(cap.name),
+			}
+			await cap.init?.(canApi);
 		}
 	}
 

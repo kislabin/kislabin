@@ -10,7 +10,7 @@ export const options = {
   },
 };
 
-export default function setup() {
+export function setup() {
   const response = http.get(`http://localhost:3000`);
 
   check(response, {

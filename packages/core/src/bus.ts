@@ -154,10 +154,14 @@ export class Bus {
 	async request<T = unknown>(envelope: Envelope): Promise<T> {
 		const handlers = this.handlers.get(envelope.type);
 		if (!handlers || handlers.length === 0) {
-			throw new Error(`[bus] no handler registered for "${envelope.type}"`);
+			throw new NoHandlerError(envelope.type);
+		}
+		const handler = handlers[0];
+		if (!handler) {
+			throw new NoHandlerError(envelope.type);
 		}
 		const ctx = createContext(envelope);
-		return (await handlers[0](envelope, ctx)) as T;
+		return (await handler(envelope, ctx)) as T;
 	}
 
 	// ── Private ──────────────────────────────────────────────────────────
@@ -193,5 +197,13 @@ export class Bus {
 		if (pattern === "*") return true;
 		if (!pattern.endsWith("*")) return false;
 		return type.startsWith(pattern.slice(0, -1));
+	}
+}
+
+
+export class NoHandlerError extends Error {
+	readonly type = "NoHandlerError" as const;
+	constructor(envelopeType: string) {
+		super(`[bus] no handler registered for "${envelopeType}"`);
 	}
 }

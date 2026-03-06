@@ -26,7 +26,7 @@ export async function buildEnvelope(
 	const url = new URL(req.url);
 	const body = await parseBody(req);
 
-	return factory.command<HttpPayload>(`http:${req.method}:${url.pathname}`, {
+	return factory.command<HttpPayload>(`command:http:${req.method}:${url.pathname}`, {
 		method: req.method,
 		path: url.pathname,
 		url: req.url,

@@ -18,9 +18,6 @@
   "javascript": {
     "formatter": { "quoteStyle": "double" }
   },
-  "css": {
-    "parser": { "cssModules": true }
-  },
   "linter": {
     "enabled": true,
     "rules": { "recommended": true }

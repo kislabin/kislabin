@@ -1,5 +1,5 @@
 {
-  "name": "@kislabin/core",
+  "name": "kislabin",
   "version": "0.0.1",
   "description": "This is just another framework.",
   "private": true,

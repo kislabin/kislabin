@@ -313,18 +313,18 @@ export function kernel(): KernelBuilder {
 
 		async start(): Promise<Kernel> {
 			state = "starting";
-			bus.emit(factory.signal("kernel.init", {}));
+			bus.emit(factory.signal("signal:kernel.init", {}));
 
 			try {
 				await registry.init(api);
 				await registry.start();
 			} catch (error) {
-				bus.emit(factory.signal("kernel.error", { error }));
+				bus.emit(factory.signal("signal:kernel.error", { error }));
 				throw error;
 			}
 
 			state = "running";
-			bus.emit(factory.signal("kernel.ready", {}));
+			bus.emit(factory.signal("signal:kernel.ready", {}));
 
 			return {
 				api,
@@ -333,7 +333,7 @@ export function kernel(): KernelBuilder {
 				},
 				async stop() {
 					state = "stopping";
-					bus.emit(factory.signal("kernel.stopping", {}));
+					bus.emit(factory.signal("signal:kernel.stopping", {}));
 
 					try {
 						await registry.stop();
@@ -342,7 +342,7 @@ export function kernel(): KernelBuilder {
 					}
 
 					state = "stopped";
-					bus.emit(factory.signal("kernel.stopped", {}));
+					bus.emit(factory.signal("signal:kernel.stopped", {}));
 				},
 			};
 		},

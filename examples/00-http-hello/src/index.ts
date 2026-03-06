@@ -1,13 +1,12 @@
 import { kernel } from "@kislabin/core";
 import { http } from "@kislabin/net-http";
 
-const app = await kernel()
-  .use(http({ port: 3000 }))
-  .handle("http:GET:/", () => ({ hello: "world" }))
-  .handle("http:GET:/users", () => [
-    { id: 1, name: "João" },
-    { id: 2, name: "Maria" },
-  ])
-  .start();
+const app = http({ port: 3000 })
+  .route({
+    path: '/users/:id',
+    handlers: {
+      get: ({ params }) => ({ id: params.id })
+    }
+  });
 
-console.log(`Server running → http://localhost:3000  (state: ${app.state})`);
+await kernel().use(app).start();

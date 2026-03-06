@@ -1,11 +1,11 @@
 {
 	"name": "@kislabin/example-http",
-	"version": "0.0.1",
+	"version": "0.1.0",
 	"description": "HTTP capability for @kislabin/core",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/kislabin/kislabin.git",
-		"directory": "packages/net-http"
+		"directory": "packages/00-http-hello"
 	},
 	"publishConfig": {
 		"access": "public"
@@ -18,7 +18,7 @@
 	},
 	"devDependencies": {
 		"@types/bun": "latest",
-		"k6": "^0.0.0"
+		"@types/k6": "^1.6.0"
 	},
 	"peerDependencies": {
 		"typescript": "^5"
